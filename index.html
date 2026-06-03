@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RapiConsultas - Consulta de Cédula y RIF en Venezuela</title>
+    <meta name="description" content="Consulta gratuita de cédula de identidad y RIF de Venezuela. Verifica información personal y empresarial de forma rápida y segura." />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="img/logo-2.png" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+  </head>
+  <body>
+    <div class="stars-container" id="stars"></div>
+
+    <header>
+      <div class="header-content">
+        <div class="logo">
+          <img src="img/logo-2.png" alt="RapiConsultas" class="logo-img" />
+          <div class="logo-text">
+            <h1>RapiConsultas</h1>
+            <p>Venezuela</p>
+          </div>
+        </div>
+        <nav class="header-nav">
+          <a href="#consultas"><i class="fas fa-search"></i> Consultar</a>
+          <a href="#info"><i class="fas fa-info-circle"></i> Info</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-flag"></i> Portal Privado
+        </div>
+        <h2>Consulta tu Cédula o RIF</h2>
+        <p class="hero-subtitle">
+          Accede a información pública de identificación personal y empresarial
+          de Venezuela de forma rápida, gratuita y segura.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <i class="fas fa-id-card"></i>
+            <span class="stat-label">Cédula</span>
+            <span class="stat-desc">Venezolanos y Extranjeros</span>
+          </div>
+          <div class="stat">
+            <i class="fas fa-building"></i>
+            <span class="stat-label">RIF</span>
+            <span class="stat-desc">Empresas y Comercios</span>
+          </div>
+          <div class="stat">
+            <i class="fas fa-bolt"></i>
+            <span class="stat-label">Instantáneo</span>
+            <span class="stat-desc">Resultados en segundos</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main id="consultas">
+      <div class="cards-container">
+        <div class="card" id="cardCedula">
+          <div class="card-glow"></div>
+          <div class="card-icon cedula-icon">
+            <i class="fas fa-id-card"></i>
+          </div>
+          <div class="card-badge">Personas</div>
+          <h2>Consulta por Cédula</h2>
+          <p class="card-description">
+            Busca información pública asociada a un número de cédula de identidad
+            venezolana. Datos personales básicos.
+          </p>
+          <form id="consultaCedula">
+            <div class="form-group">
+              <label for="cedula">Número de Cédula</label>
+              <div class="input-wrapper">
+                <i class="fas fa-user"></i>
+                <select class="prefix-select" id="cedulaPrefix" aria-label="Tipo de documento">
+                  <option value="V" selected>V</option>
+                  <option value="E">E</option>
+                </select>
+                <input type="text" id="cedula" placeholder="Ej: 12345678" required inputmode="numeric" />
+              </div>
+            </div>
+            <button type="submit" class="btn-cedula">
+              <i class="fas fa-search"></i> Buscar Cédula
+            </button>
+          </form>
+          <div class="loading" id="loadingCedula">
+            <div class="spinner"></div>
+            <p>Consultando bases de datos...</p>
+          </div>
+          <div class="message" id="messageCedula"></div>
+        </div>
+
+        <div class="card card-maintenance" id="cardRif">
+          <div class="ribbon ribbon-top-left"><span>En Mantenimiento</span></div>
+          <div class="ribbon ribbon-bottom-right"><span>En Mantenimiento</span></div>
+          <div class="maintenance-overlay">
+            <div class="maintenance-content">
+              <svg class="robot-mascot" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Antenna -->
+                <line x1="50" y1="12" x2="50" y2="22" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="50" cy="10" r="3" fill="#e94560">
+                  <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+                </circle>
+                <!-- Head -->
+                <rect x="28" y="22" width="44" height="32" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+                <!-- Eyes -->
+                <g class="robot-eye">
+                  <circle cx="40" cy="36" r="5" fill="#0f172a"/>
+                  <circle cx="40" cy="36" r="3" fill="#facc15"/>
+                  <circle cx="41" cy="34" r="1.2" fill="#fff"/>
+                </g>
+                <g class="robot-eye">
+                  <circle cx="60" cy="36" r="5" fill="#0f172a"/>
+                  <circle cx="60" cy="36" r="3" fill="#facc15"/>
+                  <circle cx="61" cy="34" r="1.2" fill="#fff"/>
+                </g>
+                <!-- Mouth -->
+                <rect x="40" y="45" width="20" height="4" rx="2" fill="#334155"/>
+                <rect x="43" y="45" width="4" height="4" rx="1" fill="#4ade80"/>
+                <rect x="50" y="45" width="4" height="4" rx="1" fill="#4ade80"/>
+                <rect x="57" y="45" width="3" height="4" rx="1" fill="#4ade80"/>
+                <!-- Neck -->
+                <rect x="44" y="54" width="12" height="6" rx="2" fill="#475569"/>
+                <!-- Body -->
+                <g class="robot-body">
+                  <rect x="30" y="60" width="40" height="28" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+                  <!-- Chest panel -->
+                  <rect x="38" y="66" width="24" height="16" rx="3" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+                  <circle cx="44" cy="72" r="2" fill="#4ade80">
+                    <animate attributeName="opacity" values="1;0.3;1" dur="0.8s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="50" cy="72" r="2" fill="#facc15">
+                    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="56" cy="72" r="2" fill="#f87171">
+                    <animate attributeName="opacity" values="1;0.5;1" dur="0.6s" repeatCount="indefinite"/>
+                  </circle>
+                  <rect x="40" y="77" width="20" height="3" rx="1.5" fill="#334155"/>
+                  <rect x="42" y="77" width="8" height="3" rx="1.5" fill="#3b82f6"/>
+                </g>
+                <!-- Left arm with wrench -->
+                <g class="robot-arm-left">
+                  <rect x="18" y="62" width="12" height="6" rx="3" fill="#475569"/>
+                  <rect x="10" y="60" width="10" height="10" rx="2" fill="#64748b"/>
+                  <!-- Wrench -->
+                  <line x1="8" y1="58" x2="8" y2="72" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="8" cy="56" r="3" fill="none" stroke="#94a3b8" stroke-width="2"/>
+                  <circle cx="8" cy="56" r="1.5" fill="#0f172a"/>
+                </g>
+                <!-- Right arm with screwdriver -->
+                <g class="robot-arm-right">
+                  <rect x="70" y="62" width="12" height="6" rx="3" fill="#475569"/>
+                  <rect x="80" y="60" width="10" height="10" rx="2" fill="#64748b"/>
+                  <!-- Screwdriver -->
+                  <line x1="86" y1="56" x2="86" y2="74" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                  <rect x="84" y="52" width="4" height="6" rx="1" fill="#facc15"/>
+                </g>
+                <!-- Sparks -->
+                <g class="spark">
+                  <line x1="6" y1="52" x2="2" y2="48" stroke="#facc15" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="2" y1="52" x2="6" y2="48" stroke="#facc15" stroke-width="1.5" stroke-linecap="round"/>
+                </g>
+                <g class="spark">
+                  <line x1="94" y1="52" x2="98" y2="48" stroke="#facc15" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="98" y1="52" x2="94" y2="48" stroke="#facc15" stroke-width="1.5" stroke-linecap="round"/>
+                </g>
+              </svg>
+              <h3>En Mantenimiento</h3>
+              <p>Estamos trabajando para mejorar este servicio. Pronto estará disponible.</p>
+            </div>
+          </div>
+          <div class="card-glow"></div>
+          <div class="card-icon rif-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <div class="card-badge">Empresas</div>
+          <h2>Consulta por RIF</h2>
+          <p class="card-description">
+            Obtén información fiscal y empresarial del Registro de Información
+            Fiscal (RIF) del SENIAT. Nombre y actividad económica.
+          </p>
+          <form id="consultaRif">
+            <div class="form-group">
+              <label for="rif">Número de RIF</label>
+              <div class="input-wrapper">
+                <i class="fas fa-briefcase"></i>
+                <select class="prefix-select" id="rifPrefix" aria-label="Tipo de RIF" disabled>
+                  <option value="C">C</option>
+                  <option value="E">E</option>
+                  <option value="G">G</option>
+                  <option value="J" selected>J</option>
+                  <option value="P">P</option>
+                  <option value="V">V</option>
+                </select>
+                <input type="text" id="rif" placeholder="Ej: 123456789" required inputmode="numeric" maxlength="9" disabled />
+              </div>
+            </div>
+            <button type="button" class="btn-rif btn-disabled" disabled>
+              <i class="fas fa-wrench"></i> En Mantenimiento
+            </button>
+          </form>
+          <div class="loading" id="loadingRif">
+            <div class="spinner"></div>
+            <p>Consultando RIF...</p>
+          </div>
+          <div class="message" id="messageRif"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section" id="info">
+      <div class="info-header">
+        <h3><i class="fas fa-info-circle"></i> ¿Cómo funciona?</h3>
+        <p>Consulta datos públicos de bases de datos no oficiales de Venezuela</p>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-database"></i></div>
+          <h4>Datos Públicos</h4>
+          <p>Accedemos a información disponible en las fuentes. Todos los datos mostrados son de carácter público.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-shield-alt"></i></div>
+          <h4>Sin Almacenamiento</h4>
+          <p>No guardamos tus consultas. Cada búsqueda se realiza en tiempo real contra las fuentes.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-bolt"></i></div>
+          <h4>Resultados Inmediatos</h4>
+          <p>Respuesta en segundos. Si el dato está disponible en las fuentes, lo encontrarás aquí.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="disclaimer-section">
+      <div class="disclaimer-content">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p>
+          <strong>Aviso:</strong> Este portal consulta información pública disponible
+          en fuentes no oficiales venezolanas. No somos un ente gubernamental. 
+          Los resultados dependen de la disponibilidad en las fuentes consultadas.
+        </p>
+      </div>
+    </section>
+
+    <section class="download-section">
+      <div class="download-card">
+        <div class="download-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>Descarga nuestra App</h3>
+        <p>Instala RapiConsultas en tu dispositivo Android para una experiencia más rápida y cómoda.</p>
+        <a href="https://github.com/moisesjimenezking/rapiconsulta_fronted/releases/download/APK/app-release.apk" class="btn-download" download>
+          <i class="fab fa-android"></i> Descargar APK
+        </a>
+        <span class="download-version">v1.0.0 • Android 7.0+</span>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-top">
+          <img src="img/logo-2.png" alt="RapiConsultas" class="footer-logo-img" />
+          <span class="footer-name">RapiConsultas</span>
+          <span class="footer-dot"></span>
+          <span class="footer-desc">Consulta de cédula y RIF en Venezuela</span>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-bottom">
+          <div class="footer-copy">
+            <p>&copy; 2025 RapiConsultas — MJ Tech. Todos los derechos reservados.</p>
+          </div>
+          <div class="footer-social">
+            <a href="mailto:jimenezsmoises27@gmail.com" class="social-link" title="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://wa.me/584127689737" target="_blank" rel="noopener" class="social-link" title="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="modalDatos" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal"></span>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="js/mocks.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

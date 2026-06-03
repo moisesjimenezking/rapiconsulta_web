@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFCC00"/>
+      <stop offset="50%" stop-color="#003DA5"/>
+      <stop offset="100%" stop-color="#CF142B"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#003DA5"/>
+      <stop offset="100%" stop-color="#001F5C"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFCC00"/>
+      <stop offset="100%" stop-color="#E6B800"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Shield shape -->
+  <path d="M256 48 L416 108 L416 268 Q416 380 256 464 Q96 380 96 268 L96 108 Z" fill="url(#g2)" stroke="url(#g3)" stroke-width="8"/>
+
+  <!-- Inner shield border -->
+  <path d="M256 78 L390 128 L390 262 Q390 358 256 428 Q122 358 122 262 L122 128 Z" fill="none" stroke="rgba(255,204,0,0.25)" stroke-width="3"/>
+
+  <!-- Horizontal stripes (flag) -->
+  <rect x="140" y="170" width="232" height="18" rx="4" fill="#FFCC00" opacity="0.9"/>
+  <rect x="140" y="198" width="232" height="18" rx="4" fill="#003DA5" opacity="0.9"/>
+  <rect x="140" y="226" width="232" height="18" rx="4" fill="#CF142B" opacity="0.9"/>
+
+  <!-- Stars row -->
+  <g fill="white" opacity="0.95">
+    <polygon points="195,216 198,224 206,224 200,229 202,237 195,232 188,237 190,229 184,224 192,224"/>
+    <polygon points="220,212 223,220 231,220 225,225 227,233 220,228 213,233 215,225 209,220 217,220"/>
+    <polygon points="245,210 248,218 256,218 250,223 252,231 245,226 238,231 240,223 234,218 242,218"/>
+    <polygon points="270,212 273,220 281,220 275,225 277,233 270,228 263,233 265,225 259,220 267,220"/>
+    <polygon points="295,216 298,224 306,224 300,229 302,237 295,232 288,237 290,229 284,224 292,224"/>
+  </g>
+
+  <!-- Magnifying glass (bottom right) -->
+  <circle cx="310" cy="310" r="42" fill="none" stroke="url(#g3)" stroke-width="10" opacity="0.85"/>
+  <line x1="340" y1="340" x2="385" y2="385" stroke="url(#g3)" stroke-width="12" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- Text "RC" -->
+  <text x="256" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="52" font-weight="900" fill="white" opacity="0.9">RC</text>
+</svg>
